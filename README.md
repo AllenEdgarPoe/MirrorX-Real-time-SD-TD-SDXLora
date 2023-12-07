@@ -10,6 +10,6 @@ Check out [my github page](https://github.com/AllenEdgarPoe) if you want to view
 
 
 ### Acknowledgement
-- This project is done in my company [XORBIS](https://xorbis.com). 
+- This project is done in my company [XORBIS](https://xorbis.com), with my co-worker (https://github.com/jms-storage). He is the coolest artist-technician using TouchDesigner! 
 - [SDXL Turbo-LoRA] (https://civitai.com/models/215485/sdxl-turbo-lora-stable-diffusion-xl-faster-than-light)
 - [T2I adapter] (https://huggingface.co/spaces/TencentARC/T2I-Adapter-SDXL)
