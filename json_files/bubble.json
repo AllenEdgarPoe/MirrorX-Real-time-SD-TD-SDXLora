@@ -1,0 +1,152 @@
+{
+  "6": {
+    "inputs": {
+      "text": "1 girl, photorealistic,(((splash of paint))), (((colorful))), ((floating colorful paint)), goddess of death, Japanese mythology, (featuring mythical creatures), chubby girl, solar system, milky way, dream, fantasy, (abstract background:1.3), masterpiece, ultra realistic, 32k, extremely detailed CG unity 8k wallpaper, best quality, masterpiece, best quality, ultra high res, extremely detailed, (psychedelic art:1.4), woman, veil, visually stunning, beautiful, award-winning illustration, cosmic space background, ethereal atmosphere,  (cyberpunk city:1.2), detailed background, detailed face, (chronomancy theme:1.1), bubble-wizard, surrounded by light green bubbles, rainbow, floating orbs, large bubbles, floating sparkling particles, translucent, glowing bubbles, swirling bubbles, graceful, bubbles in background, intricate patterns, starry sky, magical atmosphere, space, Egypt futuristic, surreal, (hyper realistic:1), ((upper body selfie, happy)), masterpiece, best quality, ultra-detailed, solo, outdoors, (night), mountains, nature, (stars, moon) cheerful, happy, backpack, sleeping bag, camping stove, water bottle, mountain boots, gloves, sweater, hat, flashlight, forest, rocks, river, wood, smoke, shadows, contrast, clear sky, analog style, (warm hue, warm tone), A portrait of a female cyborg , organic armor, silver, (intricate, atmospheric, surreal, gritty, cinematic, stylized, contrast, comic, eerie, stylized, dystopian), (high contrast:1.1), (Reflected light:1.2), ultra detailed, (glass skin:1.3), (surrealism:1.1), (disturbing:1.1), (cottagecore), (geometric:1.2), (futurism:1.2), impressionist, (detailed), (majestic:1.2), (breathtaking), (suggestive:1.3), (depressing:0.9), (cute:1.4), (enticing:1.4), (irresistible:1.4), disturbing, (fascinating:1.2), (magnetic:1.2), (color palette crimson:1.1), (color palette cerulean:0.8), furry girl, anime furry women, ((best quality)), ((masterpiece)), ((realistic)), (detailed), portrait, close up, young female, RAW photo, uhd, dslr, rainbow hair, high quality, realistic, photo realistic, dream like art, lens flare, upper body, looking at viewer, animal focus, furry, wolf fursuit, close up, detailed body, goddess body, cute, kawaii, lovely, fur, fur head, wolf head, narrow waist, wolf ears, chocker with rope, blush, paw, paw shoes, rainbow clothes, stunning gradient colors, no watermark signature, detailed background, woods, small lake with island, insanely detailed, ((masterpiece)), absurdres, HDR, retrowave, (((spread legs, open legs, sitting, open arms))), perfect hands",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "text": "bad quality, bad anatomy, worst quality, low quality, low resolution, extra fingers, blur, blurry, ugly, wrong proportions, watermark, image artifacts, lowres, ugly, jpeg artifacts, deformed, noisy image",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "36",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "20": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "29": {
+    "inputs": {
+      "lora_name": "sd_xl_turbo_lora_v1.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "20",
+        0
+      ],
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "LoraLoader"
+  },
+  "36": {
+    "inputs": {
+      "seed": 202181469662834,
+      "steps": 2,
+      "cfg": 1,
+      "sampler_name": "lcm",
+      "scheduler": "sgm_uniform",
+      "denoise": 0.8,
+      "model": [
+        "29",
+        0
+      ],
+      "positive": [
+        "42",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "38": {
+    "inputs": {
+      "image": ""
+    },
+    "class_type": "ETN_LoadImageBase64"
+  },
+  "39": {
+    "inputs": {
+      "low_threshold": 100,
+      "high_threshold": 200,
+      "resolution": 512,
+      "image": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CannyEdgePreprocessor"
+  },
+  "40": {
+    "inputs": {
+      "pixels": [
+        "38",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEEncode"
+  },
+  "41": {
+    "inputs": {
+      "control_net_name": "control-lora\\control-lora-canny-rank128.safetensors",
+      "model": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "DiffControlNetLoader"
+  },
+  "42": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": [
+        "6",
+        0
+      ],
+      "control_net": [
+        "41",
+        0
+      ],
+      "image": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "ControlNetApply"
+  },
+  "44": {
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ETN_SendImageWebSocket"
+  }
+}

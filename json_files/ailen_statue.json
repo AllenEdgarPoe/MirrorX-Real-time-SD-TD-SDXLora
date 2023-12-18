@@ -1,0 +1,152 @@
+{
+  "6": {
+    "inputs": {
+      "text": "1 girl, snow",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "text": "Craft an ultra highly detailed image focusing on the upper body of a magnificently detailed alien sculpture, inspired by Michelangelo's masterful artistry. This sculpture, while embodying the grace and precision typical of Renaissance works, should showcase an otherworldly alien design.The alien's upper form should be a testament to Michelangeloâs renowned skill in portraying complex anatomy without nsfw, blended seamlessly with unique, extraterrestrial features. The sculpture's torso, arms, and head should be intricately detailed, highlighting a mix of familiar human musculature and alien characteristics.The natural lighting in this image is key. It should cast a soft, Renaissance-style illumination over the sculpture, emphasizing the detailed workmanship and texture of the alien's skin and features. This lighting will bring out the subtle nuances of the sculptureâs form, creating a play of light and shadow that enhances its majestic and mysterious presence.This piece is not just a representation of an alien figure; it's a fusion of classic artistry and imaginative extraterrestrial design, challenging the boundaries of traditional sculpture. The end result should be a visually striking depiction that marries the old with the new, creating a timeless rendition of alien beauty through the lens of Renaissance art.",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "36",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "20": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "29": {
+    "inputs": {
+      "lora_name": "sd_xl_turbo_lora_v1.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "20",
+        0
+      ],
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "LoraLoader"
+  },
+  "36": {
+    "inputs": {
+      "seed": 202181469662834,
+      "steps": 2,
+      "cfg": 1,
+      "sampler_name": "lcm",
+      "scheduler": "sgm_uniform",
+      "denoise": 0.8,
+      "model": [
+        "29",
+        0
+      ],
+      "positive": [
+        "42",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "38": {
+    "inputs": {
+      "image": ""
+    },
+    "class_type": "ETN_LoadImageBase64"
+  },
+  "39": {
+    "inputs": {
+      "low_threshold": 100,
+      "high_threshold": 200,
+      "resolution": 512,
+      "image": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CannyEdgePreprocessor"
+  },
+  "40": {
+    "inputs": {
+      "pixels": [
+        "38",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEEncode"
+  },
+  "41": {
+    "inputs": {
+      "control_net_name": "control-lora\\control-lora-canny-rank128.safetensors",
+      "model": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "DiffControlNetLoader"
+  },
+  "42": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": [
+        "6",
+        0
+      ],
+      "control_net": [
+        "41",
+        0
+      ],
+      "image": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "ControlNetApply"
+  },
+  "44": {
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ETN_SendImageWebSocket"
+  }
+}

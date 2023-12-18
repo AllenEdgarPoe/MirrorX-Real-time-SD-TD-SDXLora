@@ -1,0 +1,152 @@
+{
+  "6": {
+    "inputs": {
+      "text": "best quality, aesthetic, detailed, by yoneyama mai, colorful, 1girl, solo, upper body, looking at viewer, parted lips, multicolored eyes, pink eyes, one eye covered, flower over eye, eyelashes, long hair, pink hair, red hair, floating hair, multicolored hair, hair flower, hair ornament, bangs, breasts, white dress, dress, bare shoulders, fingernails, nail polish, flower, butterfly, bug, blue butterfly, blue flower, red flower, purple flower, strapless, petals",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "text": "aidxlv05_neg, low quality, lowres, bad, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, signature, extra digits, artistic error, username, scan, [abstract]",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "36",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "20": {
+    "inputs": {
+      "ckpt_name": "animeIllustDiffusion_v052.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "29": {
+    "inputs": {
+      "lora_name": "sd_xl_turbo_lora_v1.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "20",
+        0
+      ],
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "LoraLoader"
+  },
+  "36": {
+    "inputs": {
+      "seed": 302713022763069,
+      "steps": 2,
+      "cfg": 1,
+      "sampler_name": "lcm",
+      "scheduler": "sgm_uniform",
+      "denoise": 0.8,
+      "model": [
+        "29",
+        0
+      ],
+      "positive": [
+        "42",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "38": {
+    "inputs": {
+      "image": ""
+    },
+    "class_type": "ETN_LoadImageBase64"
+  },
+  "39": {
+    "inputs": {
+      "low_threshold": 100,
+      "high_threshold": 200,
+      "resolution": 512,
+      "image": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CannyEdgePreprocessor"
+  },
+  "40": {
+    "inputs": {
+      "pixels": [
+        "38",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEEncode"
+  },
+  "41": {
+    "inputs": {
+      "control_net_name": "control-lora\\control-lora-canny-rank128.safetensors",
+      "model": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "DiffControlNetLoader"
+  },
+  "42": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": [
+        "6",
+        0
+      ],
+      "control_net": [
+        "41",
+        0
+      ],
+      "image": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "ControlNetApply"
+  },
+  "44": {
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ETN_SendImageWebSocket"
+  }
+}

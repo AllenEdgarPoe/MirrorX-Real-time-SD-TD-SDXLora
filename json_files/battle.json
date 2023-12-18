@@ -1,0 +1,152 @@
+{
+  "6": {
+    "inputs": {
+      "text": "An intense and dark scene featuring a battle between the forces of light and darkness, with demons and angels locked in combat. The artwork will have a gritty and edgy feel, with bold lines and deep contrasts, inspired by the comic book styles of Frank Miller and Jim Lee. The overall tone will be ominous and foreboding, conveying the weight of the conflict between good and evil, bokeh exploding evil and good many collors effect, glossy, rtx, reflections, soft light, soft shadows, dramatic lighting, atmospheric, global illumination, unreal, octane, (two tone lighting:1.5), (cyan light:1.4)",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "text": "bad quality, bad anatomy, worst quality, low quality, low resolution, extra fingers, blur, blurry, ugly, wrong proportions, watermark, image artifacts, lowres, ugly, jpeg artifacts, deformed, noisy image",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "36",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "20": {
+    "inputs": {
+      "ckpt_name": "albedobaseXL_v13.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "29": {
+    "inputs": {
+      "lora_name": "sd_xl_turbo_lora_v1.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "20",
+        0
+      ],
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "LoraLoader"
+  },
+  "36": {
+    "inputs": {
+      "seed": 302713022763069,
+      "steps": 2,
+      "cfg": 1,
+      "sampler_name": "lcm",
+      "scheduler": "sgm_uniform",
+      "denoise": 0.8,
+      "model": [
+        "29",
+        0
+      ],
+      "positive": [
+        "42",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "38": {
+    "inputs": {
+      "image": ""
+    },
+    "class_type": "ETN_LoadImageBase64"
+  },
+  "39": {
+    "inputs": {
+      "low_threshold": 100,
+      "high_threshold": 200,
+      "resolution": 512,
+      "image": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CannyEdgePreprocessor"
+  },
+  "40": {
+    "inputs": {
+      "pixels": [
+        "38",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEEncode"
+  },
+  "41": {
+    "inputs": {
+      "control_net_name": "control-lora\\control-lora-canny-rank128.safetensors",
+      "model": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "DiffControlNetLoader"
+  },
+  "42": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": [
+        "6",
+        0
+      ],
+      "control_net": [
+        "41",
+        0
+      ],
+      "image": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "ControlNetApply"
+  },
+  "44": {
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ETN_SendImageWebSocket"
+  }
+}
