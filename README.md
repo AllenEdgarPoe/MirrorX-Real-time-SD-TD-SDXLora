@@ -8,6 +8,11 @@ I've also tried [ControlLoRA](https://huggingface.co/stabilityai/control-lora), 
 
 Check out [my github page](https://github.com/AllenEdgarPoe) if you want to view my experiment results! (SORRY, I'M ON VACATION RIGHT NOW SO I'LL UPDATE THE DETAILS AS SOON AS I COMEBACK) 
 
+## Updates
+[2023-12-18] Updated ComfyUI json files 
+
+---
+
 
 ### Acknowledgement
 - This project is done in my company [XORBIS](https://xorbis.com), with my co-worker (https://github.com/jms-storage). He is the coolest artist-technician using TouchDesigner! 
