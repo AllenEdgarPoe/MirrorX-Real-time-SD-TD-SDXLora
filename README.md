@@ -16,11 +16,13 @@ I've also tried [ControlLoRA](https://huggingface.co/stabilityai/control-lora), 
 3. Copy workflow from `jsong_files` and play around!
 
 
-
 https://www.reddit.com/r/StableDiffusion/comments/18cnyo7/realtime_img2img_translation/
+
+
 ## Updates
 [2023-01-05] Updated TDComfyUI.tox file from [TouchDesigner SD] (https://github.com/olegchomp/TDComfyUI) and 'HOW TO DO' in README.md
 [2023-12-18] Updated ComfyUI workflow 
+
 
 ---
 
