@@ -6,10 +6,17 @@ To maintain consistency, I initially intended to use ControlNet. However, Contro
 
 I've also tried [ControlLoRA](https://huggingface.co/stabilityai/control-lora), [ControlNet+LCM_LoRA](https://www.youtube.com/watch?v=icZze060TiE), [ControlNet-LLLite](https://github.com/kohya-ss/ControlNet-LLLite-ComfyUI), but **T2I adapter + SDXL-turbo-LoRA** was the best solution. 
 
-Check out [my github page](https://github.com/AllenEdgarPoe) if you want to view my experiment results! (SORRY, I'M ON VACATION RIGHT NOW SO I'LL UPDATE THE DETAILS AS SOON AS I COMEBACK) 
+## How to Do
+1. Download [ComfyUI] (https://github.com/comfyanonymous/ComfyUI), enable API settings.
+2. Connect your pc with webcam, and uisng TouchDesigner, send the images to ComfyUI via API.
+3. Copy workflow from `jsong_files` and play around!
 
+
+
+https://www.reddit.com/r/StableDiffusion/comments/18cnyo7/realtime_img2img_translation/
 ## Updates
-[2023-12-18] Updated ComfyUI json files 
+[2023-01-05] Updated TDComfyUI.tox file from [TouchDesigner SD] (https://github.com/olegchomp/TDComfyUI) and 'HOW TO DO' in README.md
+[2023-12-18] Updated ComfyUI workflow 
 
 ---
 
